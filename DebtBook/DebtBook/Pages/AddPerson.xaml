@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook.Pages"
+        xmlns:viewModel="clr-namespace:DebtBook.ViewModel"
         mc:Ignorable="d"
-        Title="AddPerson" Height="Auto" Width="Auto">
+        Title="AddPerson" Height="180" Width="160" ResizeMode="NoResize">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,10 +21,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Add depter" FontSize="16" HorizontalAlignment="Center"></Label>
-        <TextBox Text="Name"  Name="TxbAddName" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5"/>
-        <TextBox Text="Value" Name="TxbAddValue" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5"></TextBox>
-        <Button Name="BtnAddPersonSave" Grid.Row="3" Grid.Column="0" Content="Save" Margin="5" Width="50"/>
-        <Button Name="BtnAddPersonCancel" Grid.Row="3" Grid.Column="1" Content="Cancel" Margin="5" Width="50"/>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Add debtor" FontSize="16" HorizontalAlignment="Center"></Label>
+        <TextBox Text="Name"  Name="TxbAddName" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" DataContext="{Binding Path=Debtor._name}"/>
+        <TextBox Text="Value" Name="TxbAddValue" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" DataContext="{Binding Path= Debtor._totalDebt}"></TextBox>
+        <Button Name="BtnAddPersonSave" Grid.Row="3" Grid.Column="0" Content="Save" Margin="5" Width="50" Command="{Binding SaveNewPerCommand}"/>
+        <Button Name="BtnAddPersonCancel" Grid.Row="3" Grid.Column="1" Content="Cancel" Margin="5" Width="50" Command="{Binding CloseWindowCommand}"/>
     </Grid>
 </Window>

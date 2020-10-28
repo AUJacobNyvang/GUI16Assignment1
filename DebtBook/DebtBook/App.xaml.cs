@@ -13,5 +13,6 @@ namespace DebtBook
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook.Pages"
+        xmlns:viewModel="clr-namespace:DebtBook.ViewModel"
         mc:Ignorable="d"
         Title="DebtBook" Height="360" Width="260">
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel></viewModel:MainWindowViewModel>
+    </Window.DataContext>
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -20,13 +24,26 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Content="Depts" FontSize="16" Margin="5"></Label>
-        <Button Name="BtnAddPerson" Content="Add Person" Grid.Row="2" Grid.Column="0" Margin="5" ></Button>
-        <Button Name="BtnRemove" Content="Remove Person" Grid.Row="2" Grid.Column="1" Margin="5"></Button>
+        <Button Name="BtnAddPerson" Content="Add Person" Grid.Row="2" Grid.Column="0" Margin="5" Command="{Binding AddDebtorCommand}" ></Button>
+        <Button Name="BtnRemove" Content="Remove Person" Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding DeleteDebtorCommand}"></Button>
 
         <ListBox Name="LIBDepts" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="200" MinWidth="200" Margin="5"
-
-                 BorderBrush="Black" BorderThickness="2"
-                 Background="LightSteelBlue"></ListBox>
+                 IsSynchronizedWithCurrentItem="True" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding Path=Debtors.DebtorsList}" 
+                 SelectedItem="{Binding Path=CurrentDebtor}" SelectedIndex="{Binding Path=CurrentIndex}"
+                 Background="LightSteelBlue" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:Name="DTShow">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Path=_name}" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="{Binding Path=_totalDebt}" HorizontalAlignment="Right"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
     
 </Window>

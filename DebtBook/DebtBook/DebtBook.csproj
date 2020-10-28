@@ -8,8 +8,11 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
+    <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
 
 </Project>
