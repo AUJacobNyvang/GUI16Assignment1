@@ -26,22 +26,27 @@
 
         <!--Label-->
         <Label Grid.Row="0" Grid.Column="0" Content="Dept for:" FontSize="16"></Label>
-        <Label Name="LDeptName" Grid.Row="0" Grid.Column="1" Content="Test" FontSize="16"></Label>
+        <Label Name="LDeptName" Grid.Row="0" Grid.Column="1" Content="{Binding CurrentDebtor._name}" FontSize="16"></Label>
         <Label Grid.Row="3" Grid.Column="2" Content="Total Amount:"></Label>
         <Label Name="LTotalAmount" Grid.Row="3" Grid.Column="3" Content="20"></Label>
 
         <!-- Buttons -->
         <Button Name="BtnClose" Content="Close" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="5"></Button>
-        <Button Name="BtnAddTransaction" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Content="Add Transaction" Height="20" VerticalAlignment="Top" Margin="5" ></Button>
+        <Button Name="BtnAddTransaction" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Content="Add Transaction" Height="20" VerticalAlignment="Top" Margin="5"
+                Command="{Binding AddTransCommand}"></Button>
 
         <!--Textbox-->
-        <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Height="20" VerticalAlignment="top" Margin="5" Text="Insert value"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Height="20" VerticalAlignment="top" Margin="5" Text="{Binding Value}"></TextBox>
 
         <!--listbox-->
-        <ListBox Name="LIBPersonDebt" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="5" Height="200" Width="300"
-                 
-                 BorderBrush="Black" BorderThickness="2"
-                 Background="LightSteelBlue"></ListBox>
+        <ListView Name="LIBPersonDebt" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="5" Height="200" Width="300"
+                  BorderBrush="Black" BorderThickness="2" Background="LightSteelBlue" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding CurrentDebtor.TransactionList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"></TextBlock>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Window>

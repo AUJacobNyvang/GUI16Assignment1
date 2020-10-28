@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DebtBook.Pages"
         xmlns:viewModel="clr-namespace:DebtBook.ViewModel"
         mc:Ignorable="d"
-        Title="DebtBook" Height="360" Width="260">
+        Title="DebtBook" Height="370" Width="260">
     <Window.DataContext>
         <viewModel:MainWindowViewModel></viewModel:MainWindowViewModel>
     </Window.DataContext>
@@ -20,13 +20,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Content="Depts" FontSize="16" Margin="5"></Label>
         <Button Name="BtnAddPerson" Content="Add Person" Grid.Row="2" Grid.Column="0" Margin="5" Command="{Binding AddDebtorCommand}" ></Button>
         <Button Name="BtnRemove" Content="Remove Person" Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding DeleteDebtorCommand}"></Button>
-
+        <Button Grid.Row="3" Content="Open" Margin="5" Command="{Binding DebtorOpenCommand }"></Button>
         <ListBox Name="LIBDepts" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="200" MinWidth="200" Margin="5"
                  IsSynchronizedWithCurrentItem="True" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding Path=Debtors.DebtorsList}" 
                  SelectedItem="{Binding Path=CurrentDebtor}" SelectedIndex="{Binding Path=CurrentIndex}"

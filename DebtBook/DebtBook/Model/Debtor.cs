@@ -9,24 +9,25 @@ namespace DebtBook.Model
 
         public string _name { get; set; }
 
-        public List<string> _transactionList { get; private set; }
+        public List<string> TransactionList { get; private set; }
 
         public Debtor(string name = "default", double debt = 0)
         {
             _totalDebt = debt;
             _name = name;
-            _transactionList = new List<string>();
+            TransactionList = new List<string>();
         }
 
         public void AddDebt(double debt)
         {
             _totalDebt += debt;
+            AddNewTransaction(debt);
         }
 
         private void AddNewTransaction(double debt)
         {
             string dateTime = (DateTime.Now.ToString()) + " : " + debt + " total debt : " + _totalDebt;
-            _transactionList.Add(dateTime);
+            TransactionList.Add(dateTime);
         }
 
         

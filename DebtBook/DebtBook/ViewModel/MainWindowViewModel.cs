@@ -88,6 +88,25 @@ namespace DebtBook.ViewModel
                 return false;
         }
 
+        private ICommand debtorOpenCommand;
+
+        public ICommand DebtorOpenCommand
+        {
+            get
+            {
+                return debtorOpenCommand ??= new DelegateCommand(DebtorOpenCommandHandler);
+            }
+        }
+
+        private void DebtorOpenCommandHandler()
+        {
+            PersonDebt windowPersonDebt = new PersonDebt();
+            windowPersonDebt.DataContext = new PersonDebtViewModel(CurrentDebtor, windowPersonDebt);
+            windowPersonDebt.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            windowPersonDebt.Show();
+        }
+
+
 
     }
 }
