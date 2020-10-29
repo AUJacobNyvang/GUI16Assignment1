@@ -10,7 +10,8 @@
     <Window.DataContext>
         <viewModel:MainWindowViewModel></viewModel:MainWindowViewModel>
     </Window.DataContext>
-    <Grid Margin="10">
+
+    <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
@@ -40,9 +41,9 @@
         <Button Name="BtnRemove" Content="Remove Person" Grid.Row="3" Grid.Column="1" Margin="5" Command="{Binding DeleteDebtorCommand}"></Button>
         <Button Grid.Row="4" Content="Open" Margin="5" Command="{Binding DebtorOpenCommand }"></Button>
         <ListBox Name="LIBDepts" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="200" MinWidth="200" Margin="5"
-                 IsSynchronizedWithCurrentItem="True" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding Path=Debtors.DebtorsList}" 
+                 IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Path=Debtors.DebtorsList}" 
                  SelectedItem="{Binding Path=CurrentDebtor}" SelectedIndex="{Binding Path=CurrentIndex}"
-                 Background="LightSteelBlue" HorizontalContentAlignment="Stretch">
+                 HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate x:Name="DTShow">
                     <Grid>

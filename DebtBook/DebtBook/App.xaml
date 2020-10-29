@@ -4,6 +4,51 @@
              xmlns:local="clr-namespace:DebtBook"
              StartupUri="Pages/MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Foreground" Value="Beige" />
+                <Setter Property="Background" Value="DarkGreen"></Setter>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="BorderBrush" Value="Black"></Setter>
+                <Setter Property="BorderThickness" Value="2"></Setter>
+            </Style.Setters>
+        </Style>
+        <Style TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="BorderThickness" Value="2"></Setter>
+                <Setter Property="BorderBrush" Value="Black"></Setter>
+            </Style.Setters>
+        </Style>
+
+        <Style x:Key="ListStyle">
+            <Style.Setters>
+                <Setter Property="Control.Background" Value="LightSteelBlue"></Setter>
+                <Setter Property="Control.BorderBrush" Value="Black"></Setter>
+                <Setter Property="Control.BorderThickness" Value="2"></Setter>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="ListBox" BasedOn="{StaticResource ListStyle}"> </Style>
+        <Style TargetType="ListView" BasedOn="{StaticResource {x:Type ListBox}}"></Style>
+
+        <Style TargetType="Window">
+            <Style.Setters>
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </Style.Setters>
+        </Style>
+        
+        <Style TargetType="Label">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Impact"></Setter>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="Menu">
+            <Style.Setters>
+                <Setter Property="Background" Value="Transparent"></Setter>
+            </Style.Setters>
+        </Style>
+
     </Application.Resources>
 </Application>
