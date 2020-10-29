@@ -38,6 +38,21 @@ namespace DebtBook.ViewModel
             CurrentDebtor.AddDebt(Value);
         }
 
+        private ICommand closeWindowCommand;
+
+        public ICommand CloseWindowCommand
+        {
+            get
+            {
+                return closeWindowCommand ??= new DelegateCommand(CloseWindowCommandHandler);
+            }
+        }
+
+        private void CloseWindowCommandHandler()
+        {
+            _currentWindow.Close();
+        }
+
 
 
     }

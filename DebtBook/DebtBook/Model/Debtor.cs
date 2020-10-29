@@ -1,32 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Prism.Mvvm;
 
 namespace DebtBook.Model
 {
-    public class Debtor
+    public class Debtor : BindableBase
     {
-        public double _totalDebt { get; set; }
+        private double _totalDebt;
 
-        public string _name { get; set; }
-
-        public List<string> TransactionList { get; private set; }
-
-        public Debtor(string name = "default", double debt = 0)
+        public double TotalDebt
         {
-            _totalDebt = debt;
-            _name = name;
-            TransactionList = new List<string>();
+            get
+            {
+                return _totalDebt;
+            }
+            set
+            {
+                if (_totalDebt != value)
+                    SetProperty(ref _totalDebt, value);
+            }
+        }
+
+        private string _name;
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (_name != value)
+                    SetProperty(ref _name, value);
+            }
+        }
+
+        public ObservableCollection<string> TransactionList { get; private set; }
+
+        public Debtor()
+        {
+            TransactionList = new ObservableCollection<string>();
+        }
+
+        public Debtor(string name, double debt)
+        {
+            TotalDebt = debt;
+            Name = name;
+            TransactionList = new ObservableCollection<string>();
         }
 
         public void AddDebt(double debt)
         {
-            _totalDebt += debt;
+            TotalDebt += debt;
             AddNewTransaction(debt);
         }
 
         private void AddNewTransaction(double debt)
         {
-            string dateTime = (DateTime.Now.ToString()) + " : " + debt + " total debt : " + _totalDebt;
+            string dateTime = (DateTime.Now.ToShortDateString())+ " " + (DateTime.Now.ToShortTimeString()) + " : " + debt + "  |  New Total Debt: " + TotalDebt;
             TransactionList.Add(dateTime);
         }
 

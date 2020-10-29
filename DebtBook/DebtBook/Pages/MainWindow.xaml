@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DebtBook.Pages"
         xmlns:viewModel="clr-namespace:DebtBook.ViewModel"
         mc:Ignorable="d"
-        Title="DebtBook" Height="370" Width="260">
+        Title="DebtBook" Height="385" Width="260">
     <Window.DataContext>
         <viewModel:MainWindowViewModel></viewModel:MainWindowViewModel>
     </Window.DataContext>
@@ -21,14 +21,25 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" Content="Depts" FontSize="16" Margin="5"></Label>
-        <Button Name="BtnAddPerson" Content="Add Person" Grid.Row="2" Grid.Column="0" Margin="5" Command="{Binding AddDebtorCommand}" ></Button>
-        <Button Name="BtnRemove" Content="Remove Person" Grid.Row="2" Grid.Column="1" Margin="5" Command="{Binding DeleteDebtorCommand}"></Button>
-        <Button Grid.Row="3" Content="Open" Margin="5" Command="{Binding DebtorOpenCommand }"></Button>
-        <ListBox Name="LIBDepts" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="200" MinWidth="200" Margin="5"
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New" Command="{Binding NewFileCommand}"></MenuItem>
+                <MenuItem Header="Open" Command="{Binding OpenFileCommand}"></MenuItem>
+                <MenuItem Header="Save" Command="{Binding SaveCommand}"></MenuItem>
+                <MenuItem Header="Save As" Command="{Binding SaveFileAsCommand}"></MenuItem>
+                <MenuItem Header="Exit" Command="{Binding CloseAppCommand}"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Label Grid.Column="0" Grid.Row="1" Content="Depts" FontSize="16" Margin="5"></Label>
+        <Button Name="BtnAddPerson" Content="Add Person" Grid.Row="3" Grid.Column="0" Margin="5" Command="{Binding AddDebtorCommand}" ></Button>
+        <Button Name="BtnRemove" Content="Remove Person" Grid.Row="3" Grid.Column="1" Margin="5" Command="{Binding DeleteDebtorCommand}"></Button>
+        <Button Grid.Row="4" Content="Open" Margin="5" Command="{Binding DebtorOpenCommand }"></Button>
+        <ListBox Name="LIBDepts" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" MinHeight="200" MinWidth="200" Margin="5"
                  IsSynchronizedWithCurrentItem="True" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding Path=Debtors.DebtorsList}" 
                  SelectedItem="{Binding Path=CurrentDebtor}" SelectedIndex="{Binding Path=CurrentIndex}"
                  Background="LightSteelBlue" HorizontalContentAlignment="Stretch">
@@ -39,8 +50,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto" ></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Path=_name}" HorizontalAlignment="Left"></TextBlock>
-                        <TextBlock Grid.Column="1" Text="{Binding Path=_totalDebt}" HorizontalAlignment="Right"></TextBlock>
+                        <TextBlock Grid.Column="0" Text="{Binding Path=Name}" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Grid.Column="1" Text="{Binding Path=TotalDebt}" HorizontalAlignment="Right"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -21,5 +21,6 @@ namespace DebtBook.Pages
         {
             InitializeComponent();
         }
+
     }
 }
